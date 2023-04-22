@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   get 'goodbye', to: 'application#goodbye'
   get 'extra', to: 'application#extra'
+  get "sign_up", to: 'users#new'
 end
