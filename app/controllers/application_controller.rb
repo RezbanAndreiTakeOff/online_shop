@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
   end
 
   def extra
-    render json: {
-      "message": "hello world!",
-      "error": "goodbye world!"
-      }
+    respond_to do |format|
+      format.html { render html: "extra" }
+      format.json { render :json => { message: "extra" } }
+    end
   end
 end
