@@ -22,7 +22,10 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-gem 'bootstrap-sass'
+
+gem 'bootstrap', '~> 5.1.3'
+gem 'sprockets-rails'
+gem 'jquery-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
