@@ -1,18 +1,21 @@
 <div class="container mt-5">
   <h2>Users</h2>
-  <table>
-    <tr>
-      <th>ID</th>
-      <th>Email</th>
-      <th>Creation Date</th>
-    </tr>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.id %></td>
-        <td><%= user.email %></td>
-        <td><%= user.created_at %></td>
-      </tr>
-    <% end %>
-
-  </table>
+  <table class="table table-info table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Email</th>
+          <th scope="col">Creation Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>

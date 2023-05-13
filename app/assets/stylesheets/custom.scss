@@ -1,17 +1,11 @@
 @import "bootstrap";
 
 #logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
+  color: $green-600;
   font-weight: bold;
 }
 #logo:hover {
-  color: #fff;
+  color: $green-800;
   text-decoration: none;
 }
 

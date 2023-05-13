@@ -26,6 +26,7 @@ gem 'devise'
 gem 'bootstrap', '~> 5.1.3'
 gem 'sprockets-rails'
 gem 'jquery-rails'
+gem "importmap-rails"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
