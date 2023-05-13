@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'application#hello'
+  root 'extra#index'
 
   get 'goodbye', to: 'application#goodbye'
   get 'extra', to: 'application#extra'
-  get "sign_up", to: 'users#new'
+  get 'log_out', to: 'extra#new'
+  get 'accounts', to: 'users#index', as: "users"
 end
