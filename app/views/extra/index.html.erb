@@ -1,6 +1,6 @@
 <div class="container mt-5">
    <div class="jumbotron">
-     <h1 class="display-4">Welcome to the OnlineShop</h1>
+     <h1 class="display-4">Welcome to Postera</h1>
    </div>
 </div>
 <section style="background-color: #fff;">
@@ -9,7 +9,7 @@
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6 col-xl-4">
           <div class="card text-black">
-            <%= image_tag "1.jpeg", class: "d-block w-100" %>
+            <%= image_tag product.image.attached? ? product.image : "1.jpeg", class: "d-block w-100" %>
             <div class="card-body">
               <div class="text-center">
                 <h5 class="card-title"><%= product.name %></h5>

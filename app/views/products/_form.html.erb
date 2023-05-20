@@ -32,6 +32,10 @@
   </div>
   <br>
   <div class="form-outline mb-4">
+    <%= f.file_field :image, class: "form-control", placeholder: "Image"%>
+  </div>
+  <br>
+  <div class="form-outline mb-4">
     <%= f.collection_select(:category_id, Category.all, :id, :name, {:include_blank => "Select..."} , {:required => true, :class => "form-select"}) %>
   </div>
   <br>
