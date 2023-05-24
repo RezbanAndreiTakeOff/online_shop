@@ -1,0 +1,38 @@
+<section style="background-color: #fff;">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+        <div class="card text-black">
+          <%= image_tag @product.image.attached? ? @product.image : "1.jpeg", class: "d-block w-100" %>
+          <div class="card-body">
+            <div class="text-center">
+              <h5 class="card-title"><%= @product.name %></h5>
+              <p class="text-muted mb-4"><%= @product.description %></p>
+            </div>
+            <div>
+              <div class="d-flex justify-content-between">
+                <span>SKU</span><span><%= @product.sku %></span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>Stock</span><span><%= @product.stock %></span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>Price</span><span><%= @product.price %></span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>Artist</span><span><%= @product.artist %></span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>Dimensions</span><span><%= @product.width %> x <%= @product.height %></span>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between total font-weight-bold mt-4">
+              <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-primary" %>
+              <%= link_to 'Back', products_path, class: "btn btn-warning" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

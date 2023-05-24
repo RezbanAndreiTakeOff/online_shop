@@ -1,16 +1,42 @@
 <div class="container mt-5">
    <div class="jumbotron">
-     <h1 class="display-4">Welcome to the OnlineShop</h1>
-     <p class="lead">This is a simple example of a home page built using HTML and Bootstrap.</p>
-     <hr class="my-4">
-     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+     <h1 class="display-4">Welcome to Postera</h1>
    </div>
 </div>
-<!-- <div class="card mt-5" style="width: 18rem;">
-  <%= image_tag "1.jpeg", class: "d-block w-100" %>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div> -->
+<section style="background-color: #fff;">
+  <% @products.each do |product| %>
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-4">
+          <div class="card text-black">
+            <%= image_tag product.image.attached? ? product.image : "1.jpeg", class: "d-block w-100" %>
+            <div class="card-body">
+              <div class="text-center">
+                <h5 class="card-title"><%= product.name %></h5>
+                <p class="text-muted mb-4"><%= product.description %></p>
+              </div>
+              <div>
+                <div class="d-flex justify-content-between">
+                  <span>Artist</span><span><%= product.artist %></span>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <span>SKU</span><span><%= product.sku %></span>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <span>Stock</span><span><%= product.stock %></span>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <span>Price</span><span><%= product.price %></span>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <span>Dimensions</span><span><%= product.width %> x <%= product.height %></span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>
