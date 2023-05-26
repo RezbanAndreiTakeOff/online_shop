@@ -1,19 +1,10 @@
 class ApplicationController < ActionController::Base
 
-  def hello
-    render html: "hello world!"
-  end
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def goodbye
-    render html: "goodbye world!"
-  end
+     protected
 
-  def extra
-    respond_to do |format|
-      format.html { render html: "extra" }
-      format.json { render :json => { message: "extra" } }
-    end
-  end
+
 
   private
     def check_admin
@@ -21,5 +12,10 @@ class ApplicationController < ActionController::Base
         redirect_to root_path
         return
       end
+    end
+
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :first_name, :last_name, :phone_number, :password, :password_confirmation)}
+      devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :email, :first_name, :last_name, :phone_number, :password, :current_password)}
     end
 end
