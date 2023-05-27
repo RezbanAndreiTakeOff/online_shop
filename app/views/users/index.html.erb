@@ -5,6 +5,10 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Email</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Role</th>
           <th scope="col">Creation Date</th>
         </tr>
       </thead>
@@ -13,6 +17,10 @@
           <tr>
             <td><%= user.id %></td>
             <td><%= user.email %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.phone_number %></td>
+            <td><%= user.role %></td>
             <td><%= user.created_at %></td>
           </tr>
         <% end %>

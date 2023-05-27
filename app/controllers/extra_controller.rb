@@ -3,6 +3,6 @@ class ExtraController < ApplicationController
   end
 
   def index
-    @products = Product.all
+    @products = Product.all.with_attached_image
   end
 end
