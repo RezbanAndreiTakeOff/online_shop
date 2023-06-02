@@ -1,6 +1,6 @@
 class BillingAddressesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_billing_address, only: %i[ edit ]
+  before_action :set_billing_address, only: %i[ edit update ]
 
 
 
