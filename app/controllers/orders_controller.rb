@@ -1,12 +1,13 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_admin, except: [:show, :create]
+  before_action :check_admin, except: [:show, :create, :index]
   before_action :set_order, only: %i[ show edit update destroy ]
 
   include Pagy::Backend
   # GET /orders or /orders.json
   def index
     orders = Order.includes(:product, :user).all
+    orders = orders.where(user_id: params[:user_id]) if params[:user_id].present?
     @pagy, @orders = pagy(orders)
   end
 
