@@ -26,7 +26,9 @@
           <td><%= order.tracking_number %></td>
           <td><%= link_to 'Show', order %>
             <% if current_user.admin? %>
-              | <%= link_to 'Edit', edit_order_path(order) %> | <%= link_to 'Destroy', order, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+              <% if order.status == "not shipped" %>
+                | <%= link_to 'Ship Now', edit_order_path(order) %> | <%= link_to 'Destroy', order, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+              <% end %>
             <% end %>
           </td>
         </tr>
