@@ -7,6 +7,10 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     products = Product.includes(:category).all
+    products = products.where(category_id: params[:category_id]) if params[:category_id].present?
+    products = products.where(artist: params[:artist]) if params[:artist].present?
+    products = products.where("name ILIKE ? OR description ILIKE ?","%#{params[:search]}%","%#{params[:search]}%") if params[:search].present?
+    products = products.order(:name)
     @pagy, @products = pagy(products)
   end
 
