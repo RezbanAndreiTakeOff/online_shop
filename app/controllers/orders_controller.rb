@@ -7,7 +7,10 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     orders = Order.includes(:product, :user).all
-    orders = orders.where(user_id: params[:user_id]) if params[:user_id].present?
+    unless current_user.admin?
+      orders = orders.where(user_id: current_user.id)
+    end
+    orders = orders.where(status: params[:status]) if params[:status].present?
     @pagy, @orders = pagy(orders)
   end
 
@@ -39,7 +42,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
     respond_to do |format|
-      if order_params[:tracking_number].present? && @order.update(tracking_number: order_params[:tracking_number], status: :shipped)
+      if order_params[:tracking_number].present? && @order.update(tracking_number: order_params[:tracking_number], status: "shipped")
         format.html { redirect_to order_url(@order), notice: "Order was successfully shipped." }
         format.json { render :show, status: :ok, location: @order }
       else

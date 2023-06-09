@@ -2,6 +2,7 @@
   <h2>Products</h2>
   <%= link_to 'New Product', new_product_path %>
   <br>
+  <%= render "filter_menu" %>
   <br>
   <%== pagy_info(@pagy) %>
   <br>
