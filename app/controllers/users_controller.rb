@@ -17,8 +17,14 @@ class UsersController < ApplicationController
       address.save
       @user.billing_address = address
     end
+    if @user.credit_card.nil?
+      card = CreditCard.create(user_id: @user.id)
+      card.save
+      @user.credit_card = card
+    end
 
     @shipping_address = @user.shipping_address
     @billing_address = @user.billing_address
+    @credit_card = @user.credit_card
   end
 end

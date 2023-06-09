@@ -1,22 +1,18 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_admin, except: [:show, :create]
+  before_action :check_admin, except: [:show, :create, :index]
   before_action :set_order, only: %i[ show edit update destroy ]
 
   include Pagy::Backend
   # GET /orders or /orders.json
   def index
     orders = Order.includes(:product, :user).all
+    orders = orders.where(user_id: params[:user_id]) if params[:user_id].present?
     @pagy, @orders = pagy(orders)
   end
 
   # GET /orders/1 or /orders/1.json
   def show
-  end
-
-  # GET /orders/new
-  def new
-    @order = Order.new
   end
 
   # GET /orders/1/edit
@@ -43,8 +39,8 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
     respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to order_url(@order), notice: "Order was successfully updated." }
+      if order_params[:tracking_number].present? && @order.update(tracking_number: order_params[:tracking_number], status: :shipped)
+        format.html { redirect_to order_url(@order), notice: "Order was successfully shipped." }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit, status: :unprocessable_entity }
